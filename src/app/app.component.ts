@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
     this.websocket = new WebSocket("ws://127.0.0.1:5678/");
     this.websocket.onmessage = function (event) {
       let data = JSON.parse(event.data);
-      console.log('data.....',data)
+      console.log('data.....',data);
     }
   }
 
@@ -38,6 +38,21 @@ export class AppComponent implements OnInit{
   }
   
   checkForClone(){
+    this.websocket = new WebSocket("ws://127.0.0.1:5678/");
+    this.websocket.send(JSON.stringify({image: this.imageSource}));
+  }
+
+  /**the funcitons need to be adjusted according to the server port */
+  checkForResample(){
+    this.websocket = new WebSocket("ws://127.0.0.1:5678/");
+    this.websocket.send(JSON.stringify({image: this.imageSource}));
+  }
+  checkForSplice(){
+    this.websocket = new WebSocket("ws://127.0.0.1:5678/");
+    this.websocket.send(JSON.stringify({image: this.imageSource}));
+  }
+  checkForFilter(){
+    this.websocket = new WebSocket("ws://127.0.0.1:5678/");
     this.websocket.send(JSON.stringify({image: this.imageSource}));
   }
 }
