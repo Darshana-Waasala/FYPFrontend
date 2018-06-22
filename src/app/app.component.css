@@ -1,0 +1,30 @@
+.textColor {
+    color: #4B0082;
+    background-color: white;
+}
+.borderColor {
+    border-width: 3px;
+    border-style: solid;
+    border-color: #4B0082;
+}
+.backgroundColor {
+    background-color: #4B0082;
+    color: white;
+}
+
+.lighterColor {
+    background: #814CA7;
+}
+.darkerColor {
+    background: #34005B;
+}
+
+.fixedHeight{
+    max-height: 240px
+}
+
+.btn-space {
+    margin-right: 5px;
+    margin-bottom: 13px;
+    width: 100px !important;
+}

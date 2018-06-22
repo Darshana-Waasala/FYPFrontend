@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-dark" style="background-color: #4B0082;">
+    <a class="navbar-brand" href="#">
+        <img src="../assets/defaultImage.png" width="30" height="30" class="d-inline-block align-top" alt=""> Image Forgery Detection - Auxilium
+    </a>
+</nav>
+
+<br>
+<div class="text-center">
+    <img [src]="imageSource" class="img-fluid fixedHeight" alt="Responsive image">
+</div>
+<br>
+<ng-container *ngIf="!fileSelected">
+    <label class="btn btn-primary btn-lg btn-block darkerColor">
+        Browse
+        <input type="file" style="display: none;" (change)="onChange($event)">
+    </label>
+</ng-container>
+
+<ng-container *ngIf="fileSelected">
+    <div class="container">
+        <div class="btn-toolbar justify-content-around" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="col-md-auto" >
+                <button type="button" class="btn btn-primary darkerColor btn-space" (click)="checkForClone()">Clone</button>
+                <button type="button" class="btn btn-primary darkerColor btn-space">Resample</button>
+                <button type="button" class="btn btn-primary darkerColor btn-space">Splice</button>
+                <button type="button" class="btn btn-primary darkerColor btn-space">Filter</button>
+
+            </div>
+            <div class="col-4">
+                <button type="button" class="btn btn-warning" (click)="clearImage()">Clear Image</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <button type="button" class="btn btn-primary btn-lg btn-block">ClearImage</button>
+    <button type="button" class="btn btn-secondary darkerColor btn-lg btn-block">Block level button</button> -->
+</ng-container>
