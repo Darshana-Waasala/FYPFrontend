@@ -1,0 +1,3 @@
+commands to do the production build angular
+
+$ ng build --prod --aot --build-optimizer --base-href=/home/waasala/workspace/FYPFrontend/dist/FYPFrontend/
