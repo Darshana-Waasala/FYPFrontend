@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Http, Response } from '@angular/http';
 
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators'
 import { of } from 'rxjs'
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +13,17 @@ import { of } from 'rxjs'
 export class GeneralService {
 
   messages: string[] = [];
+  private url = './assets/location.json';
 
   constructor(
     private http: HttpClient,
   ) { }
+
+ 
+  /**get the json file items */
+  public getURL(){
+    return this.http.get(this.url);
+  }
 
 
   /** POST a new item to the server */

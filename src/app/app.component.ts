@@ -22,11 +22,17 @@ export class AppComponent implements OnInit{
   ){}
 
   ngOnInit(){
-    /*this.websocket = new WebSocket("ws://127.0.0.1:5678/");
+    this.websocket = new WebSocket("ws://127.0.0.1:8003/");
     this.websocket.onmessage = function (event) {
       let data = JSON.parse(event.data);
       console.log('data.....',data);
-    }*/
+    }
+    console.log('in the funciton');
+    this.genService.getURL().subscribe(
+      data =>{
+        console.log(data);
+      }
+    );
   }
 
   onChange(event){
@@ -81,7 +87,6 @@ export class AppComponent implements OnInit{
     this.websocket.send(JSON.stringify({image: this.imageSource}));
   }
   checkForFilter(){
-    this.websocket = new WebSocket("ws://127.0.0.1:5678/");
     this.websocket.send(JSON.stringify({image: this.imageSource}));
   }
 }
