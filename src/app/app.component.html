@@ -1,17 +1,20 @@
 <nav class="navbar navbar-dark" style="background-color: #4B0082;">
     <a class="navbar-brand" href="#">
-        <img src="./assets/defaultImage.png" width="30" height="30" class="d-inline-block align-top" alt=""> Image Forgery Detection - Auxilium
+        <img src="../assets/defaultImage.png" width="30" height="30" class="d-inline-block align-top" alt=""> Image Forgery Detection - Auxilium
     </a>
 </nav>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  loadingText="Loading..."
+  type="ball-fussion">
+</ngx-spinner>
 
 <br>
 <div class="text-center">
-    <img [src]="imageSource" style="padding: 5px" class="img-fluid fixedHeight" alt="Responsive image">
-    <ng-container *ngIf="resultImage !== undefined">
-        <img [src]="resultImage" style="padding: 5px" class="img-fluid fixedHeight" alt="Responsive image">
-    </ng-container>
+    <img [src]="imageSource" class="img-fluid fixedHeight" alt="Responsive image">
 </div>
-
 <br>
 <ng-container *ngIf="!fileSelected">
     <label class="btn btn-primary btn-lg btn-block darkerColor">
@@ -19,14 +22,28 @@
         <input type="file" style="display: none;" (change)="onChange($event)">
     </label>
 </ng-container>
+<!--<ng-container *ngIf="spliceSelected">-->
+  <!--<div class="container">-->
+    <!--<div class="btn-toolbar justify-content-around" role="toolbar" aria-label="Toolbar with button groups">-->
+      <!--<img  [src]="rgbSource" width="400" height="300" class="d-inline-block align-top" alt="">-->
 
+    <!--</div>-->
+  <!--</div>-->
+<!--</ng-container>-->
 <ng-container *ngIf="fileSelected">
     <div class="container">
         <div class="btn-toolbar justify-content-around" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="col-md-auto">
+            <div class="col-md-auto" >
                 <button type="button" class="btn btn-primary darkerColor btn-space" (click)="checkForClone()">Clone</button>
                 <button type="button" class="btn btn-primary darkerColor btn-space" (click)="checkForResample()">Resample</button>
-                <button type="button" class="btn btn-primary darkerColor btn-space" (click)="checkForSplice()">Splice</button>
+              <div ngbDropdown class="d-inline-block">
+                <button class="btn btn-primary darkerColor btn-space" id="dropdownBasic1" ngbDropdownToggle>Splice</button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button class="btn btn-primary darkerColor" class="dropdown-item" (click)="checkForSpliceNoise()" >Noise</button>
+                  <button class="btn btn-primary darkerColor" class="dropdown-item" (click)="checkForSpliceCFA()" >CFA</button>
+
+                </div>
+              </div>
                 <button type="button" class="btn btn-primary darkerColor btn-space" (click)="checkForFilter()">Filter</button>
 
             </div>
@@ -41,36 +58,3 @@
     <button type="button" class="btn btn-secondary darkerColor btn-lg btn-block">Block level button</button> -->
 </ng-container>
 
-<!-- for the loading display -->
-<!-- <ng-container *ngIf="loading">
-    <div class="container">
-        <div class="spinner fixed-top"></div>
-        <div class="overlay"></div>
-    </div>
-</ng-container> -->
-
-<ng-container *ngIf="loading">
-    <div class="container">
-        <div class="animationload">
-            <div class="osahanloading"></div>
-        </div>
-    </div>
-</ng-container>
-
-<!-- <ng-container *ngIf="loading">
-    <div class="container">
-        <div class="animationload">
-            <div id="loader">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="lading"></div>
-            </div>
-        </div>
-    </div>
-</ng-container> -->
