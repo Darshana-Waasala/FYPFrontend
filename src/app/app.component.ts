@@ -18,15 +18,13 @@ export class AppComponent implements OnInit {
   loading = false;
   name = undefined;
   resultImage = undefined;
-  websocket= undefined;
+  websocket = undefined;
 
   constructor(
-    private genService:GeneralService,
-    private http: HttpClient
+    private genService:GeneralService
   ){}
 
   ngOnInit(){
-    
     this.websocket = new WebSocket("ws://127.0.0.1:8003/");
     this.websocket.onmessage = function (event) {
       let data = JSON.parse(event.data);
@@ -39,7 +37,7 @@ export class AppComponent implements OnInit {
       }
     );
   }
-  
+
   onChange(event) {
     const reader = new FileReader();
 
